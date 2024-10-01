@@ -17,6 +17,8 @@ if (checkMethodRequest("POST") && checkRequestInput('email')) {
     echo $name . "<br>";
     echo $email . "<br>";
     echo $password . "<br>";
+    // validations
+
 } else {
     echo "Not Supported Method";
 }
