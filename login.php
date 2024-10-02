@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
 
@@ -25,8 +26,23 @@
 
 <body class="light rtl">
     <div class="wrapper vh-100">
+        <?php
+        if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])):
+            foreach ($_SESSION['errors'] as $error):
+        ?>
+
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $error; ?>
+                </div>
+
+        <?php
+            endforeach;
+            unset($_SESSION['errors']);
+        endif;
+        ?>
         <div class="row align-items-center h-100">
-            <form class="col-lg-3 col-md-4 col-10 mx-auto text-center">
+            <form method="POST" action="handlers/handelLogin.php" class="col-lg-3 col-md-4 col-10 mx-auto text-center">
+
                 <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
                     <svg version="1.1" id="logo" class="navbar-brand-img brand-md" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120"
@@ -41,19 +57,18 @@
                 <h1 class="h6 mb-3">Sign in</h1>
                 <div class="form-group">
                     <label for="inputEmail" class="sr-only">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control form-control-lg" placeholder="Email address"
-                        required="" autofocus="">
+                    <input type="text" class="form-control" name="email" id="inputEmail4">
+
                 </div>
                 <div class="form-group">
                     <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" class="form-control form-control-lg"
-                        placeholder="Password" required="">
+                    <input type="password" name="password" class="form-control" id="inputPassword5">
                 </div>
                 <div class="checkbox mb-3">
                     <label>
                         <input type="checkbox" value="remember-me"> Stay logged in </label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Let me in</button>
+                <button class="btn btn-lg btn-primary btn-block" value="login" type="submit">Login</button>
                 <p class="mt-5 mb-3 text-muted">© 2020</p>
             </form>
         </div>
@@ -71,13 +86,13 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-56159088-1');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-56159088-1');
     </script>
 </body>
 
