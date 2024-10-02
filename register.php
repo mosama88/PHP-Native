@@ -1,3 +1,8 @@
+<?php
+// include('handlers/handelRegister.php');
+session_start();
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -25,7 +30,24 @@
 
 <body>
     <div class="wrapper vh-100">
+        <?php
+        if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])):
+            foreach ($_SESSION['errors'] as $error):
+        ?>
+
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $error; ?>
+                </div>
+
+        <?php
+            endforeach;
+            unset($_SESSION['errors']);
+        endif;
+        ?>
+
+
         <div class="row align-items-center h-100">
+
             <form method="POST" action="handlers\handelRegister.php" class="col-lg-6 col-md-8 col-10 mx-auto">
                 <div class="mx-auto text-center my-4">
                     <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
@@ -45,6 +67,7 @@
                 <div class="form-group">
                     <label for="firstname">Name</label>
                     <input type="text" id="firstname" name="name" class="form-control">
+
                 </div>
                 <div class="form-group">
                     <label for="inputEmail4">Email</label>
