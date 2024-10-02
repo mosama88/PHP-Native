@@ -54,11 +54,11 @@ if (empty($errors)) {
     $users_file = fopen("../data/users.csv", "a+");
     $data = [$name, $email, sha1($password)];
     fputcsv($users_file, $data);
+    $_SESSION['auth'] = [$name, $email];
+    redirect("../index.php");
+    die();
 } else {
     $_SESSION['errors'] = $errors;
-    header("location: ../register.php");
+    redirect("../register.php");
     die();
 }
-echo "<pre>";
-var_dump($errors);
-echo "</pre>";

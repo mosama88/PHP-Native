@@ -31,3 +31,9 @@ function sanitizeInput($input)
 
     return   trim(htmlspecialchars(htmlentities($input)));
 }
+
+
+function redirect($location)
+{
+    header("location: $location");
+}

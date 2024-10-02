@@ -280,9 +280,10 @@
                     <span class="ml-3 item-text">Authentication</span>
                 </a>
                 <ul class="collapse list-unstyled pl-4 w-100" id="auth">
-                    <a class="nav-link pl-3" href="login.php"><span class="ml-1">Login</span></a>
-                    <a class="nav-link pl-3" href="./auth-login-half.html"><span class="ml-1">Login 2</span></a>
-                    <a class="nav-link pl-3" href="register.php"><span class="ml-1">Register</span></a>
+                    <?php if (!isset($_SESSION['auth'])): ?>
+                        <a class="nav-link pl-3" href="login.php"><span class="ml-1">Login</span></a>
+                        <a class="nav-link pl-3" href="register.php"><span class="ml-1">Register</span></a>
+                    <?php endif ?>
                     <a class="nav-link pl-3" href="./auth-resetpw.html"><span class="ml-1">Reset
                             Password</span></a>
                     <a class="nav-link pl-3" href="./auth-confirm.html"><span class="ml-1">Confirm

@@ -31,10 +31,15 @@
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Profile</a>
+                <?php if (isset($_SESSION['auth'])): ?>
+                    <a class="dropdown-item" href="profile.php">Profile</a>
+                <?php endif ?>
+
                 <a class="dropdown-item" href="#">Settings</a>
                 <a class="dropdown-item" href="#">Activities</a>
-                <a class="dropdown-item" href="logout.php">Logout</a>
+                <?php if (isset($_SESSION['auth'])): ?>
+                    <a class="dropdown-item" href="logout.php">Logout</a>
+                <?php endif ?>
             </div>
         </li>
     </ul>
