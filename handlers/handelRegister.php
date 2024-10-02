@@ -50,7 +50,10 @@ if (checkMethodRequest("POST") && checkRequestInput('email')) {
 }
 
 if (empty($errors)) {
-    echo "Your Data Send Successfully";
+
+    $users_file = fopen("../data/users.csv", "a+");
+    $data = [$name, $email, sha1($password)];
+    fputcsv($users_file, $data);
 } else {
     $_SESSION['errors'] = $errors;
     header("location: ../register.php");

@@ -13,7 +13,7 @@ function InputVal($input)
 
 function InputValMax($input, $length)
 {
-    if (strlen(($_POST[$input])) > $length) {
+    if (strlen($input) > $length) {
         return true;
     }
     return false;
@@ -21,7 +21,7 @@ function InputValMax($input, $length)
 
 function InputValMin($input, $length)
 {
-    if (strlen(($_POST[$input])) < $length) {
+    if (strlen(($input)) < $length) {
         return true;
     }
     return false;
