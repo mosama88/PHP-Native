@@ -4,26 +4,27 @@
 
 function InputVal($input)
 {
-    if (empty($_POST[$input])) {
-        return false;
+    if (empty($input)) {
+        return true;
     }
-    return true;
+    return false;
 }
+
 
 function InputValMax($input, $length)
 {
     if (strlen(($_POST[$input])) > $length) {
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
 function InputValMin($input, $length)
 {
     if (strlen(($_POST[$input])) < $length) {
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
 

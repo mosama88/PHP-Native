@@ -8,9 +8,9 @@ session_start();
 $errors = [];
 
 if (checkMethodRequest("POST") && checkRequestInput('email')) {
-    // $name  = sanitizeInput(checkMethod('name'));
-    // $email = sanitizeInput(checkMethod('email'));
-    // $password = sanitizeInput(checkMethod('password'));
+    // $name = sanitizeInput($_POST['name']);
+    // $email = sanitizeInput($_POST['email']);
+    // $password = sanitizeInput($_POST['password']);
 
     foreach ($_POST as $key => $value) {
         $$key = sanitizeInput($value);
@@ -23,26 +23,26 @@ if (checkMethodRequest("POST") && checkRequestInput('email')) {
 
 
     // validations Name
-    if (!InputVal("name")) {
+    if (InputVal($name)) {
         $errors[] = "Please Write Your Name";
-    } elseif (!InputValMax("name", 25)) {
-        $errors[] = "Please Write less Than 3 Chars";
-    } elseif (!InputValMin("name", 5)) {
-        $errors[] = "Please Write More Than 3 Chars";
+    } elseif (InputValMax($name, 25)) {
+        $errors[] = "Please Write less Than 25 Chars";
+    } elseif (InputValMin($name, 5)) {
+        $errors[] = "Please Write More Than 5 Chars";
     }
     echo "<br>";
     // validations Email
-    if (!InputVal("email")) {
+    if (InputVal($email)) {
         $errors[] = "Please Write Your Mail";
-    } elseif (!emailVal($_POST["email"])) {
+    } elseif (!emailVal($email)) {
         $errors[] = "Please Write Your Mail as Email";
     }
     echo "<br>";
     // validations Password
-    if (!InputVal("password")) {
+    if (InputVal($password)) {
         $errors[] = "Please Write Your Password";
     }
-    if ($_POST["password"] != $_POST["password_confirm"]) {
+    if ($password != $_POST["password_confirm"]) {
         $errors[] = "Your Password Not Match";
     }
 } else {

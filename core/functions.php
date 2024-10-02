@@ -26,9 +26,6 @@ function checkRequestInput($input)
 }
 
 
-
-
-
 function sanitizeInput($input)
 {
 
